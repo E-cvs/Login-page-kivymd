@@ -1,0 +1,137 @@
+ManagerWindow:
+    OpenWindow:
+    LoginWindow:
+    WorkingWindow:
+<OpenWindow>:
+    name:'open'
+    orientation: "vertical"
+    # Background color
+    canvas.before:
+        Color:
+            rgba: (240/255,240/255,240/255,1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    MDLabel:
+        # Welcome label
+        id: open_label
+        text:   "Welcome"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 1, 0.5
+        font_size: 40
+        halign: 'center'
+        pos_hint:{"center_x":0.5, "center_y": .75}
+        height: self.texture_size[1]
+        padding_y:15
+    MDRoundFlatButton:
+        # Start button   
+        id: open_button
+        text: "Let's Go"
+        text_color: "black"
+        font_size: 15
+        pos_hint:{"center_x":0.5, "center_y": .5}
+        on_release: app.root.current = 'login' # change screen, to login page
+
+<LoginWindow>:
+    name:'login'
+    id: login
+    orientation: "vertical"
+    # Background color
+    canvas.before:
+        Color:
+            rgba: (240/255,240/255,240/255,1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    # to change the mods we may use MDFloatingActionButtonSpeedDial 
+    MDLabel:
+        # Welcome label
+        id: welcome_label
+        text:   "Welcome"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 1, 0.5
+        font_size: 40
+        halign: 'center'
+        pos_hint:{"center_x":0.5, "center_y": .75}
+        height: self.texture_size[1]
+        padding_y:15
+    MDTextField:
+        # user name input text
+        id: user
+        hint_text: "User Name"
+        helper_text: "Use lowercase letters"
+        helper_text_mode: "on_focus"
+        icon_right: "account"
+        size_hint_x: None
+        width: 200
+        font_size: 15
+        pos_hint:{"center_x":0.5,"center_y": .55}
+    MDTextField:
+        # password input text
+        id: password
+        hint_text: "Password"
+        icon_right: "eye-off"
+        size_hint_x: None
+        width: 200
+        font_size: 15
+        pos_hint:{"center_x":0.5,"center_y": .45}
+        password: True
+    MDRoundFlatButton:
+        # Login button
+        id: button
+        text: "Log In"
+        text_color: "black"
+        font_size: 15
+        pos_hint:{"center_x":0.5, "center_y": .35}
+        on_press: root.get_names()
+        on_release: app.root.current = root.current_window
+
+                
+<WorkingWindow>:
+    name: "work"
+    orientation: "vertical"
+    # Background color
+    canvas.before:
+        Color:
+            rgba: (240/255,240/255,240/255,1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+
+    MDLabel:
+        # welcome text
+        id: work_label
+        text:   "Control of 3 water tanks with raspberry pi"
+        theme_text_color: "Custom"
+        text_color: 0, 0, 1, 0.5
+        font_size: 40
+        halign: 'center'
+        pos_hint:{"center_x":0.5, "center_y": .75}
+        height: self.texture_size[1]
+        padding_y:15
+    MDProgressBar:
+        # Progressbar
+        id: progress
+        pos_hint:{"center_x": .5, "center_y": .55}
+        size_hint_x: .5
+        value: 5
+        color: 0, 0, 1, 0.5
+    MDRoundFlatButton:
+        # Start Button
+        id: work_button_start
+        text: "Start"
+        text_color: "black"
+        font_size: 15
+        pos_hint:{"center_x":0.375, "center_y":.45}
+    MDRoundFlatButton:
+        # Stop Button
+        id: work_button_stop
+        text: "Stop"
+        text_color: "black"
+        font_size: 15
+        pos_hint:{"center_x":0.625, "center_y":.45}
+
+
+
